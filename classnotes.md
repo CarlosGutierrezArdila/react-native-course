@@ -9,5 +9,10 @@
 # React Native components
 - React components, state, props, JSX
 - Uses native components instead of web components to build the view
-
+# React native navigation
+- Navigators: stack, tab, drawer
+- npm install react-navigation --save
+- Stack navigation: transition between screens and going back
+- Drawer: provides contruction of a side drawer
+- Tab: bottom tab navigation suport
 
