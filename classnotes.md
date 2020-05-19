@@ -19,4 +19,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
 - Stack navigation: transition between screens and going back
 - Drawer: provides contruction of a side drawer
 - Tab: bottom tab navigation suport
+# Icon Fonts and buttons
+- set of symbols
+- React native elemnts icons
 
