@@ -6,6 +6,10 @@
 - android: v8 / IOS: javaScript core
 - RN bridge runs on top of each engine
 - Expo SDK
+- **To fix watchers error (Manjaro) runnig RN on expo:**
+```shell
+echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf && sudo sysctl --system
+```
 # React Native components
 - React components, state, props, JSX
 - Uses native components instead of web components to build the view
