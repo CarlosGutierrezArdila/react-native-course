@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text } from 'react-native'
+import { View, ScrollView, Text } from 'react-native'
 import { Card } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { baseUrl } from '../shared/baseUrl'
@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 function RenderItem(props) {
     console.info(props)
     const item = props.item
-    if (item !== null) {
+    if (item) {
         return (<Card
             featuredTitle={item.name}
             featuredSubtitle={item.designation}
@@ -39,14 +39,9 @@ class Home extends Component {
     render() {
         return (
             <ScrollView>
-                <RenderItem
-                    item={this.props.dishes.dishes.filter(dish => dish.featured)[0]} />
-                <RenderItem
-                    item={this.props.promotions.promotions.filter(promo => promo.featured)[0]} />
-                <RenderItem
-                    item={this.props.leaders.leaders.filter(leader => leader.featured)[0]} />
-
-
+               <RenderItem item={this.props.dishes.dishes.filter((dish) => dish.featured)[0]} />
+                <RenderItem item={this.props.promotions.promotions.filter((promo) => promo.featured)[0]} />
+                <RenderItem item={this.props.leaders.leaders.filter((leader) => leader.featured)[0]} />
             </ScrollView>)
     }
 }

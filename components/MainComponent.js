@@ -16,15 +16,18 @@ import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/
 
 const mapStateToProps = state => {
   return {
+    dishes: state.dishes,
+    comments: state.comments,
+    promotions: state.promotions,
+    leaders: state.leaders
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchDishes: dispatch(fetchDishes),
-  fetchComments: dispatch(fetchComments),
-  fetchPromos: dispatch(fetchPromos),
-  fetchLeaders: dispatch(fetchLeaders)
-
+  fetchDishes: () => dispatch(fetchDishes()),
+  fetchComments: () => dispatch(fetchComments()),
+  fetchPromos: () => dispatch(fetchPromos()),
+  fetchLeaders: () => dispatch(fetchLeaders()),
 })
 
 // stack navigacion
@@ -238,4 +241,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(Main)
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
