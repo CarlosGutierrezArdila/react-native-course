@@ -14,13 +14,13 @@ const mapStateToProps = state => {
 
 
 function RenderItem(props) {
-    console.info(props)
     const item = props.item
     if (item) {
         return (<Card
             featuredTitle={item.name}
             featuredSubtitle={item.designation}
-            image={{ uri: baseUrl + item.image }} >
+            // image={{ uri: baseUrl+item.image }} 
+            >
             <Text style={{ margin: 10 }}>
                 {item.description}
             </Text>
@@ -35,6 +35,7 @@ class Home extends Component {
     static navigationOptions = {
         title: 'Home'
     }
+
 
     render() {
         return (

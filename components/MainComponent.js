@@ -206,7 +206,6 @@ class Main extends Component {
     this.props.fetchComments()
     this.props.fetchPromos()
     this.props.fetchLeaders()
-    console.info(this.props)
   }
 
   render() {

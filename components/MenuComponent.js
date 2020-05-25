@@ -29,7 +29,8 @@ class Menu extends Component {
                     caption={item.description}
                     featured
                     onPress={() => navigate('DishDetails', { dishId: item.id })} //navigate and pass info
-                    image={{ uri: baseUrl + item.image }} />
+                    // image={{ uri: baseUrl + item.image }} 
+                    />
             )
         }
 
