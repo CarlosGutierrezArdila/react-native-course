@@ -160,7 +160,8 @@ const MainNavigator = createDrawerNavigator({
           name='info-circle'
           type='font-awesome'
           size={24}
-          color={tintColor} />
+          color={tintColor}
+          solid={false} />
       )
     }
   },
@@ -205,6 +206,7 @@ class Main extends Component {
     this.props.fetchComments()
     this.props.fetchPromos()
     this.props.fetchLeaders()
+    console.info(this.props)
   }
 
   render() {
