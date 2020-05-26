@@ -32,7 +32,12 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
 - changes made by recucers (functions)
 - redux thunk: middleware to write action creators
 - Fetch: interface, promise based to fetch resources from server
-
-
+# Forms and modals
+- **Forms:** data entry through "form-like" elements:
+ - TextInput
+ - input from react-native-elements
+ - switch, slider and picker
+- **Modals:** open from a host component, track the visibility in the state of host component
+ 
 
 
