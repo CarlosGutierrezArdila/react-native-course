@@ -24,7 +24,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
 - React native elemnts icons
 # json server
 - simulate get rest server
-- json-server --host 192.168.0.17 --watch db.json -p 3001 -d 2000
+- json-server --host 192.168.0.127 --watch db.json -p 3001 -d 2000
 # Redux
 - Flex architechture
 - single state for the application, single source of truth
