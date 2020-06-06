@@ -23,7 +23,6 @@ class Reservation extends Component {
     }
 
     handleReservation() {
-        console.info(JSON.stringify(this.state))
         this.toggleModal()
     }
 

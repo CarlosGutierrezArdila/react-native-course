@@ -3,7 +3,7 @@ import { View, Text, ScrollView, FlatList, Modal, StyleSheet, Button } from 'rea
 import { Card, Icon, Rating, AirbnbRating, Input } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { baseUrl } from '../shared/baseUrl'
-import { postFavorite } from '../redux/ActionCreators'
+import { postFavorite, postComment } from '../redux/ActionCreators'
 
 const mapStateToProps = state => {
     return {
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    postFavorite: (dishId) => dispatch(postFavorite(dishId))
+    postFavorite: (dishId) => dispatch(postFavorite(dishId)),
+    postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment))
 })
 
 function RenderDish(props) {
@@ -28,22 +29,24 @@ function RenderDish(props) {
                 <Text style={{ margin: 10 }}>
                     {dish.description}
                 </Text>
-                <Icon
-                    style={{ flex: 2 }}
-                    raised
-                    reverse
-                    name={props.favorite ? 'heart' : 'heart-o'}
-                    type='font-awesome'
-                    color='#f50'
-                    onPress={() => props.favorite ? console.log('Already fav') : props.onPressFav()} />
-                <Icon
-                    style={{ flex: 2 }}
-                    raised
-                    reverse
-                    name='pencil'
-                    type='font-awesome'
-                    color='#512DA8'
-                    onPress={() => props.onPressCom()} />
+                <View
+                    style={{ justifyContent: 'center', flexDirection: 'row', flex: 1 }}>
+                    <Icon
+                        raised
+                        reverse
+                        name={props.favorite ? 'heart' : 'heart-o'}
+                        type='font-awesome'
+                        color='#f50'
+                        onPress={() => props.favorite ? console.log('Already fav') : props.onPressFav()} />
+                    <Icon
+                        raised
+                        reverse
+                        name='pencil'
+                        type='font-awesome'
+                        color='#512DA8'
+                        onPress={() => props.onPressCom()} />
+                </View>
+
             </Card>
         )
 
@@ -125,16 +128,16 @@ function RenderModal(props) {
                     onChangeText={value => res.comment = value}
                 />
                 <Button
-                    onPress={() => { props.closeModal() }}
+                    onPress={() => { props.submit(props.dish, res.rating, res.author, res.comment); props.closeModal() }}
                     color='#512DA8'
                     title='SUBMIT'
-                    style={{marginVertical: 8}}
+                    style={{ marginVertical: 8 }}
                 />
                 <Button
                     onPress={() => { props.closeModal() }}
                     color='#999999'
                     title='CANCEL'
-                    style={{marginVertical: 8}}
+                    style={{ marginVertical: 8 }}
                 />
             </View>
 
@@ -160,7 +163,6 @@ class DishDetails extends Component {
     }
 
     closeModal() {
-        console.info(JSON.stringify(this.state))
         this.toggleModal()
     }
 
@@ -171,6 +173,10 @@ class DishDetails extends Component {
     comment(dishId) {
         this.setState({ dish: dishId })
         this.toggleModal()
+    }
+
+    addComment(dishId, rating, author, comment) {
+        this.props.postComment(dishId, rating, author, comment)
     }
 
     static navigationOptions = {
@@ -192,10 +198,8 @@ class DishDetails extends Component {
                     style={styles.modal}
                     showModal={this.state.showModal}
                     closeModal={this.closeModal.bind(this)}
-                    rating={this.state.rating}
-                    comment={this.state.comment}
-                    author={this.state.author}
                     dish={this.state.dish}
+                    submit={this.addComment.bind(this)}
                 />
             </ScrollView>
         )
