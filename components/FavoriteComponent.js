@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, FlatList, Text } from 'react-native'
+import { View, FlatList, Text, Alert } from 'react-native'
 import { Tile, ListItem } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { baseUrl } from '../shared/baseUrl'
@@ -32,7 +32,25 @@ class Favorites extends Component {
                 {
                     text: 'Delete',
                     type: 'delete',
-                    onPress: () => this.props.deleteFavorite(item.id)
+                    onPress: () => {
+                        Alert.alert(
+                            'Delete Favorite?',
+                            `Are you sure to remove the dish ${item.name} from your favorites?`,
+                            [
+                                {
+                                    text: 'Cancel',
+                                    onPress: () => console.info('cancel'),
+                                    style: 'cancel'
+                                },
+                                {
+                                    text: 'OK',
+                                    onPress: () => this.props.deleteFavorite(item.id),
+                                    style: 'cancel'
+                                }
+                            ],
+                            { cancelable: false }
+                        )
+                    }
                 }
             ]
             return (
@@ -42,7 +60,7 @@ class Favorites extends Component {
                         title={item.name}
                         subtitle={item.description}
                         hideChevron={true}
-                        onPress={() => navigate('Dishdetail', { dishId: item.id })}
+                        onPress={() => navigate('DishDetails', { dishId: item.id })}
                         leftAvatar={{ source: { uri: baseUrl + item.image } }}
                     />
                 </Swipeout>
