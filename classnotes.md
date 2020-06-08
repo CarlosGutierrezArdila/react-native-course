@@ -38,6 +38,11 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
  - input from react-native-elements
  - switch, slider and picker
 - **Modals:** open from a host component, track the visibility in the state of host component
+# Animations
+- Animated API
+- value, valuexy and interpolate methods
+- Animated. Image, View, Text ScrollView
+- React-native-animatable: precompose animations using Animated API
  
 
 
