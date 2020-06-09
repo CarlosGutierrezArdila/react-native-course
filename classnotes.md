@@ -43,6 +43,8 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
 - value, valuexy and interpolate methods
 - Animated. Image, View, Text ScrollView
 - React-native-animatable: precompose animations using Animated API
- 
+ # Gestures
+ - interating with the app by manipulating UI element on the screen
+ - **PanResponder:** Reconciles several touches to recognize touches, and multi touch
 
 
