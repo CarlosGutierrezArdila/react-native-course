@@ -11,6 +11,7 @@ import Contact from './ContactComponent'
 import About from './AboutComponent'
 import Reservation from './ReservationComponent'
 import Favorites from './FavoriteComponent'
+import Login from './LoginComponent'
 // connect to redux store
 import { connect } from 'react-redux'
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators'
@@ -149,6 +150,25 @@ const FavoritesNavigator = createStackNavigator({
   })
 })
 
+// Login
+const LoginNavigator = createStackNavigator({
+  Login: { screen: Login }
+}, {
+  navigationOptions: ({ navigation }) => ({
+    headerStyle: {
+      backgroundColor: "#512DA8"
+    },
+    headerTitleStyle: {
+      color: "#fff"
+    },
+    headerTintColor: "#fff",
+
+    headerLeft: <Icon name="menu" size={24}
+      color='white'
+      onPress={() => navigation.toggleDrawer()} />
+  })
+})
+
 //custom drawer
 const CustomDrawerContentComponent = (props) => (
   <ScrollView>
@@ -172,8 +192,22 @@ const CustomDrawerContentComponent = (props) => (
 // main drawer side navigator
 
 const MainNavigator = createDrawerNavigator({
-  Home:
-  {
+  Login: {
+    screen: LoginNavigator,
+    navigationOptions: {
+      title: 'Login',
+      drawerLabel: 'Login',
+      drawerIcon: ({ tintColor }) => (
+        <Icon
+          name='sign-in'
+          type='font-awesome'
+          size={24}
+          color={tintColor} />
+      )
+
+    }
+  },
+  Home: {
     screen: HomeNavigator,
     navigationOptions: {
       title: 'Home',
@@ -262,6 +296,7 @@ const MainNavigator = createDrawerNavigator({
     },
   }
 }, {
+  initialRouteName: 'Home',
   drawerBackgroundColor: '#D1C4E9',
   contentComponent: CustomDrawerContentComponent
 })

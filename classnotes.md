@@ -51,5 +51,20 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
  - configure store using persistcombinereducers
  - types of storage: local storage, session storage, asyncstorage
  - wrap root componetn using PersistGate: delays UI rendering until the store is rehydrated
+ # The Expo SDK
+ - native adn js library that provides access to the system functionality (camera, contacts, local storage, calendar, sensors, etc)
+ - UI components (icon blur views)
+ - Services for apps, managin assets, push notifications, building native binaries
+ - Expo CLI and expo dev environment XDE
+ # Secure store
+ - secure storage using key value storage
+ - AsyncStorage: react native default key value storage
+    - IOS: serialized dictionary (small) or separate files(larger)
+    - Android: uses RocksDB or SQLite
+- Encrypts and secures key value pairs on the device
+- setItemAsync(), getItenAsync() and deleteItemAsync()
+
+ 
+
 
 
