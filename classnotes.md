@@ -46,5 +46,10 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
  # Gestures
  - interating with the app by manipulating UI element on the screen
  - **PanResponder:** Reconciles several touches to recognize touches, and multi touch
+ # Redux persist
+ - persist redux state to device and rehydrate (retrieve data from device) 
+ - configure store using persistcombinereducers
+ - types of storage: local storage, session storage, asyncstorage
+ - wrap root componetn using PersistGate: delays UI rendering until the store is rehydrated
 
 
