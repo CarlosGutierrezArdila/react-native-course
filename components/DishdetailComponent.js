@@ -28,6 +28,10 @@ function RenderDish(props) {
         return (dx < -200)
     }
 
+    const recognizeComment = ({ moveX, moveY, dx, dy }) => {
+        return (dx > 200)
+    }
+
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: (event, gestureState) => {
             return true
@@ -54,6 +58,9 @@ function RenderDish(props) {
                     ],
                     { cancelable: false }
                 )
+            if (recognizeComment(gestureState)) {
+                props.onPressCom()
+            }
 
 
         }
