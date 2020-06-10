@@ -63,6 +63,10 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
     - Android: uses RocksDB or SQLite
 - Encrypts and secures key value pairs on the device
 - setItemAsync(), getItenAsync() and deleteItemAsync()
+# Local notifications
+- puts notifications into the notification bar
+- presentLocalNotificationAsync(), scheduleLocalNotificationAsync() ,dismiss...
+
 
  
 
