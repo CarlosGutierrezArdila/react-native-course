@@ -66,6 +66,11 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
 # Local notifications
 - puts notifications into the notification bar
 - presentLocalNotificationAsync(), scheduleLocalNotificationAsync() ,dismiss...
+# Pick an image
+- ImagePicker API
+- LaunchImageLibraryAsync() / LaunchCameraAsync()
+- ImageManipulator to resize, rotate, flip, crop
+- Camera API: renders a preview of device camera, detect faces or bar codes
 
 
  
