@@ -4,6 +4,9 @@ import { Icon, Input, CheckBox, Button } from 'react-native-elements'
 import * as SecureStore from 'expo-secure-store'
 import * as Permissions from 'expo-permissions'
 import * as ImagePicker from 'expo-image-picker'
+import * as ImageManipulator from "expo-image-manipulator"
+import { Asset } from 'expo-asset'
+import { } from 'expo-asset'
 import { createBottomTabNavigator } from 'react-navigation'
 import { baseUrl } from '../shared/baseUrl'
 
@@ -138,8 +141,8 @@ class RegisterTab extends Component {
     }
 
     getImageFromCamera = async () => {
-        const cameraPermission = await Permissions.askAsync(Permissions.CAMERA);
-        const cameraRollPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        const cameraPermission = await Permissions.askAsync(Permissions.CAMERA)
+        const cameraRollPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL)
 
         if (cameraPermission.status === 'granted' && cameraRollPermission.status === 'granted') {
             let capturedImage = await ImagePicker.launchCameraAsync({
@@ -147,10 +150,21 @@ class RegisterTab extends Component {
                 aspect: [4, 3],
             });
             if (!capturedImage.cancelled) {
-                console.log(capturedImage);
-                this.setState({ imageUrl: capturedImage.uri });
+                this.processImage(capturedImage.uri)
             }
         }
+
+    }
+
+    processImage = async (imageUri) => {
+        let processedImage = await ImageManipulator.manipulateAsync(
+            imageUri, 
+            [
+                {resize: {width: 400}}
+            ],
+            {format: 'png'}
+        )
+        this.setState({imageUrl: processedImage.uri })
 
     }
 
