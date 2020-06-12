@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import DishDetails from './DishdetailComponent'
-import { View, Text, Platform, Image, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, Platform, Image, StyleSheet, ScrollView, ToastAndroid } from 'react-native'
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from 'react-navigation'
 import { Icon } from 'react-native-elements'
 import Constants from 'expo-constants'
+import NetInfo from "@react-native-community/netinfo"
 //components
 import Menu from './MenuComponent'
 import Home from './HomeComponent'
@@ -308,6 +309,29 @@ class Main extends Component {
     this.props.fetchComments()
     this.props.fetchPromos()
     this.props.fetchLeaders()
+  }
+
+  componentWillUnmount() {
+    NetInfo.addEventListener(this.handleConnectivityChange)() //due to change in API at newer version of CRNA
+  }
+
+  handleConnectivityChange = (connectionInfo) => {
+    switch (connectionInfo.type) {
+      case 'none':
+        ToastAndroid.show('offline', ToastAndroid.LONG)
+        break
+      case 'wifi':
+        ToastAndroid.show('WiFi', ToastAndroid.LONG)
+        break
+      case 'cellular':
+        ToastAndroid.show('Mobile Data', ToastAndroid.LONG)
+        break
+      case 'unknown':
+        ToastAndroid.show('Unknown network', ToastAndroid.LONG)
+        break
+      default:
+        break
+    }
   }
 
   render() {
