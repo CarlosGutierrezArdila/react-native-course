@@ -1,4 +1,4 @@
-package com.confusion;
+package confusion;
 
 import android.os.Bundle;
 

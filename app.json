@@ -12,6 +12,13 @@
     ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "confusion"
+    },
+    "android": {
+      "package": "confusion"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
