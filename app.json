@@ -1,24 +1,16 @@
 {
-  "name": "confusion",
-  "displayName": "confusion",
   "expo": {
-    "name": "confusion",
-    "slug": "confusion",
-    "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "bundleIdentifier": "confusion"
-    },
-    "android": {
-      "package": "confusion"
-    },
-    "entryPoint": "node_modules/expo/AppEntry.js"
+   "name": "Confusion",
+   "icon": "./components/images/applogo.png",
+   "version": "1.0.0",
+   "slug": "your-app-slug",
+   "ios": {
+     "bundleIdentifier": "com.yourcompany.yourappname",
+     "buildNumber": "1.0.0"
+   },
+   "android": {
+     "package": "com.yourcompany.yourappname",
+     "versionCode": 1
+   }
   }
 }

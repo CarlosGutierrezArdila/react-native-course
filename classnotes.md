@@ -74,6 +74,31 @@ echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-wat
 # Network information
 - NetInfo API
 - connectionChange event
+# Building APK
+- expo start
+- expo login (need to have an account)
+- configure app.json as follows:
+```json
+{
+  "expo": {
+   "name": "Confusion",
+   "icon": "./components/images/applogo.png",
+   "version": "1.0.0",
+   "slug": "your-app-slug",
+   "ios": {
+     "bundleIdentifier": "com.yourcompany.yourappname",
+     "buildNumber": "1.0.0"
+   },
+   "android": {
+     "package": "com.yourcompany.yourappname",
+     "versionCode": 1
+   }
+  }
+}
+``` 
+    - logo must be squared
+- expo build:android 
+- wait for the build
 
 
 
